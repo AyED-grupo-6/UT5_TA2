@@ -24,9 +24,12 @@ public class TArbolTrie implements IArbolTrie {
 
     @Override
     public int buscar(String palabra) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
+        if (raiz != null) {
+            return raiz.buscar(palabra);
+        }
+        return 0;
+    }
     @Override
     public LinkedList<String> predecir(String prefijo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

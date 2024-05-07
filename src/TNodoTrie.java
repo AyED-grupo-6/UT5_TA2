@@ -1,5 +1,4 @@
 
-
 import java.util.LinkedList;
 
 public class TNodoTrie implements INodoTrie {
@@ -30,11 +29,11 @@ public class TNodoTrie implements INodoTrie {
         if (nodo != null) {
             if (nodo.esPalabra) {
                 System.out.println(s);
-                
+
             }
             for (int c = 0; c < CANT_CHR_ABECEDARIO; c++) {
                 if (nodo.hijos[c] != null) {
-                    imprimir(s+(char)(c + 'a'), nodo.hijos[c]);
+                    imprimir(s + (char) (c + 'a'), nodo.hijos[c]);
                 }
             }
         }
@@ -42,31 +41,58 @@ public class TNodoTrie implements INodoTrie {
 
     @Override
     public void imprimir() {
-        
+
         imprimir("", this);
     }
-    
-      private TNodoTrie buscarNodoTrie(String s) {
+
+    private TNodoTrie buscarNodoTrie(String s) {
         TNodoTrie nodo = this;
-     
-         // implementar
-        
+
+        // implementar
+
         return nodo;
     }
-    
-     private void predecir(String s, String prefijo, LinkedList<String> palabras, TNodoTrie nodo) {
-     // implementar
-       
+
+    private void predecir(String s, String prefijo, LinkedList<String> palabras, TNodoTrie nodo) {
+        // implementar
+
     }
 
     @Override
     public void predecir(String prefijo, LinkedList<String> palabras) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+                                                                       // Tools | Templates.
     }
 
     @Override
     public int buscar(String s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int comparaciones = 0;
+        TNodoTrie nodoActual = this;
+        TNodoTrie unHijo = null;
+
+        for (char car : s.toCharArray()) {
+
+            unHijo = nodoActual.hijos[this.obtenerHijos(car)];
+
+            if (unHijo == null) {
+                // salir del for
+                return 0;
+
+            } else {
+                nodoActual = unHijo;
+            }
+            comparaciones++;
+        }
+
+        if (nodoActual.esPalabra) {
+            return comparaciones;
+        }
+
+        return 0;
     }
-  
+
+    private int obtenerHijos(char car) {
+        int indice = car - 'a';
+        return indice;
+    }
 }
