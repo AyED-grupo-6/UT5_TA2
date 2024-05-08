@@ -41,7 +41,6 @@ public class TNodoTrie implements INodoTrie {
 
     @Override
     public void imprimir() {
-
         imprimir("", this);
     }
 

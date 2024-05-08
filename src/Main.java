@@ -15,5 +15,14 @@ public class Main {
                 trie.insertar(p);
         }
         trie.imprimir();       
+
+
+        
+        palabrasclave = ManejadorArchivosGenerico.leerArchivo("./src/palabras.txt");
+        for (String p : palabrasclave) {
+                System.out.println(trie.buscar(p));
+        }
+        //trie.imprimir();       
+
     }
 }
